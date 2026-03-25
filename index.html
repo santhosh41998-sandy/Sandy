@@ -3,82 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Story</title>
+    <title>Advanced 3D Animations</title>
     <style>
         body {
-            background: black;
-            color: white;
+            margin: 0;
             overflow: hidden;
-            position: relative;
+            background: #000;
         }
-        .star {
+        .floating {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            width: 2px;
-            height: 2px;
-            animation: twinkle 1.5s infinite;
-        }
-        @keyframes twinkle {
-            0%, 20%, 80%, 100% {
-                opacity: 0.2;
-            }
-            10%, 30%, 60% {
-                opacity: 1;
-            }
-        }
-        .float {
-            position: absolute;
-            animation: float 3s infinite;
+            animation: float 6s ease-in-out infinite;
         }
         @keyframes float {
-            0% {
+            0%, 100% {
                 transform: translateY(0);
             }
             50% {
                 transform: translateY(-20px);
             }
-            100% {
-                transform: translateY(0);
-            }
         }
         .heart {
             position: absolute;
-            font-size: 24px;
-            color: red;
+            width: 50px;
+            height: 50px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 30%, 100% 100%, 50% 70%, 0% 100%, 0% 30%);
+            animation: rotate 5s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0); }
+            to { transform: rotate(360deg); }
+        }
+        .glowing-text {
+            color: white;
+            font-size: 3em;
+            text-align: center;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        }
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: burst 0.8s ease-out infinite;
+        }
+        @keyframes burst {
+            from { transform: scale(0); }
+            to { transform: scale(1); opacity: 0; }
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 5px white;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Love Story Page!</h1>
-    <button onclick="revealLoveMessage()">Click for Love Message</button>
-    <div id="loveMessage" style="display: none;">❤️ You are loved! ❤️</div>
-
+    <div class="glowing-text">Welcome to the 3D Animation Showcase!</div>
+    <div class="heart floating" style="top: 70%; left: 20%;"></div>
+    <div class="heart floating" style="top: 40%; left: 60%;"></div>
+    <div class="heart floating" style="top: 20%; left: 80%;"></div>
     <script>
-        function revealLoveMessage() {
-            document.getElementById('loveMessage').style.display = 'block';
+        function createParticles() {
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                document.body.appendChild(particle);
+                setTimeout(() => { particle.remove(); }, 800);
+            }
         }
-
-        // Generate stars
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
-            document.body.appendChild(star);
-        }
-
-        // Floating hearts
-        for (let i = 0; i < 10; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '💖';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 5 + 2 + 's';
-            heart.style.top = Math.random() * 100 + 10 + 'vh';
-            heart.classList.add('float');
-            document.body.appendChild(heart);
-        }
+        setInterval(createParticles, 500);
     </script>
 </body>
 </html>
