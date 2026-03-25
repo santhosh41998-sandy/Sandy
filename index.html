@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Love Button</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Theme</title>
+    <style>
+        body {
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #d81b60;
+            animation: pulse 1.5s infinite;
+        }
+        p {
+            color: #880e4f;
+            font-size: 20px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .heart {
+            color: #ff1744;
+            font-size: 100px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
 </head>
 <body>
-    <button onclick="displayMessage()">Click Me</button>
-    <script>
-        function displayMessage() {
-            alert('I LOVE YOU BEDI');
-        }
-    </script>
+    <h1>💖 A Love Story 💖</h1>
+    <p>Once upon a time, there was a boy named <strong>Santhosh</strong> and a girl named <strong>Priyadharshini</strong>.</p>
+    <p>They were deeply in love and shared many beautiful moments together.</p>
+    <div class="heart">❤️</div>
+    <p>May their love continue to blossom forever!</p>
 </body>
 </html>
