@@ -6,39 +6,93 @@
     <title>Love Theme</title>
     <style>
         body {
-            background-color: #ffebee;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
+            background: linear-gradient(45deg, #ff77a1, #ff9f68);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: backgroundAnimation 15s linear infinite;
         }
         h1 {
-            color: #d81b60;
-            animation: pulse 1.5s infinite;
+            color: white;
+            font-size: 3em;
+            text-align: center;
+            animation: pulse 1s infinite;
         }
-        p {
-            color: #880e4f;
-            font-size: 20px;
+        .button {
+            padding: 20px 30px;
+            background: #ff1a1a;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            animation: buttonAnimation 1s infinite;
         }
-        @keyframes pulse {
+        @keyframes buttonAnimation {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        .heart {
-            color: #ff1744;
-            font-size: 100px;
-            animation: heartbeat 1s infinite;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(45deg, #ff77a1, #ff9f68);
+            }
+            50% {
+                background: linear-gradient(45deg, #ff9f68, #ff77a1);
+            }
+            100% {
+                background: linear-gradient(45deg, #ff77a1, #ff9f68);
+            }
+        }
+        .heart {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: float 3s infinite;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 0;
+        }
+        .heart:after {
+            width: 50px;
+            height: 50px;
+            left: 25px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>💖 A Love Story 💖</h1>
-    <p>Once upon a time, there was a boy named <strong>Santhosh</strong> and a girl named <strong>Priyadharshini</strong>.</p>
-    <p>They were deeply in love and shared many beautiful moments together.</p>
-    <div class="heart">❤️</div>
-    <p>May their love continue to blossom forever!</p>
+    <h1>Santhosh 💖 Priyadharshini</h1>
+    <button class="button">I LOVE YOU BEDI</button>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
 </body>
 </html>
